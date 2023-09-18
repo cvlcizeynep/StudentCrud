@@ -1,0 +1,52 @@
+﻿@model Student
+  
+
+
+<form asp-controller="Student" asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" type="text" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Surname" class="form-label">Surname</label>
+        <input asp-for="Surname" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Class" class="form-label">Class</label>
+        <input asp-for="Class" type="text" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">E-mail</label>
+        <input asp-for="Email" type="email" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Department" class="form-label">Deparment</label>
+        <input asp-for="Department" type="text" class="form-control">
+    </div>
+    <div class="mb-5">
+        <span > Education Time </span>
+
+    @foreach( var item in ViewBag.EducationTime as Dictionary<string,int>) {
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" id="@(item.Value)EducationTime" 
+            asp-for="EducationTime" value="@item.Value">
+            <label class="form-check-label" asp-for="EducationTime" for="@(item.Value)EducationTime">
+               @item.Key
+            </label>
+        </div> 
+    }
+        <div class="form-floating mb-5">
+            <textarea class="form-control" placeholder="Student add description" id="floatingTextarea"></textarea>
+            <label asp-for="Description">Student Description</label>
+        </div>
+
+        </div>   
+
+  
+    <button type="submit" class="btn btn-dark">Student Save</button>
+        
+
+</form>

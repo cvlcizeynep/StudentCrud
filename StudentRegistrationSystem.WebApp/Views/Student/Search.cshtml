@@ -1,0 +1,35 @@
+﻿@model List<Student>
+
+
+
+<h1>Arama Sonuçları</h1>
+
+<form method="get" asp-action="Search" asp-controller="Student">
+    <div class="form-group">
+        
+        @foreach (var name in Model)
+        { <label asp-for=@name.Name>Name:</label>
+        <input asp-for =@name.Name type="text" class="form-control" name="Name" id="Name" value="@ViewBag.Name">
+        }
+
+    </div>          
+        
+        
+       
+    <button type="submit" class="btn btn-primary">Ara</button>
+</form>
+
+@if (Model.Count > 0)
+{
+    <h2>Result</h2>
+    <ul>
+        @foreach (var name in Model)
+        {
+            <li>@name</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Not Result.</p>
+}

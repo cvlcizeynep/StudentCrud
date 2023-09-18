@@ -1,0 +1,16 @@
+﻿@model Student
+
+<div class="card text-center">
+    <div class="card-header">
+       <b> Student Details</b>
+    </div>
+    <div class="card-body">
+        <p class="card-title"><b>Student No :</b> @Model.Id</p>
+        <p class="card-text"><b> Student Name :</b>@Model.Name </p>
+        <p class="card-text"><b> Student Surname :</b>@Model.Surname </p>
+         <p class="card-text"><b> Student Departmen :</b> @Model.Department</p>
+        <p class="card-text"><b> Student Class :</b> @Model.Class</p>
+        <p class="card-text"><b>Student Mail :</b> @Model.Email </p>
+        <a asp-controller="Student" asp-action="Index" class="btn btn-primary">Return Student List</a>
+    </div>
+</div>

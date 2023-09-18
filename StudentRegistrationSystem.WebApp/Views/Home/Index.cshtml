@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">LOTUS</h1>
+    <h2>Welcome to Turkish Software Developers School</a>.</h2>
+</div>
+<div class="col-md-7 d-flex flex-center">
+    <div class="p-4 p-md-5 flex-grow-1">
+        <div class="row flex-between-center">
+            <div class="col-auto">
+                <h3>Student Registration System </h3>
+            </div>
+        </div>
+        <form>
+            <div class="mb-3">
+                <label class="form-label" for="card-email">Authorized Person User Name</label>
+                <input class="form-control" id="card-email" type="text" />
+            </div>
+            <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                    <label class="form-label" for="card-password">Password</label>
+                </div>
+                <input class="form-control" id="card-password" type="password" />
+            </div>
+        </form>
+
+        <a asp-controller="Student" asp-action="Index" class="btn btn-danger">Login</a>
+
+
+
