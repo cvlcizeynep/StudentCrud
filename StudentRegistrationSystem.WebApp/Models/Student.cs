@@ -10,7 +10,6 @@
         public string? Department{ get; set; }
         public string? EducationTime { get; set; }
         public string? Description { get; set; }
-
-
+        public DateTime? DateOfRegistration { get; set; }
     }
 }

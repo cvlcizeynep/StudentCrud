@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using StudentRegistrationSystem.WebApp.Models;
 using StudentRegistrationSystem.WebApp.Repository;
 
@@ -34,8 +35,18 @@ namespace StudentRegistrationSystem.WebApp.Controllers
             {"1 Month",1},
             {"3 Month",3},
             {"6 Month",6},
-            {"12 Month",12 } };
-          return View();
+            {"12 Month",12 }
+            };
+
+
+            ViewBag.DepartmentSelect = new SelectList(new List<SelectDepartment>() {
+                new(){ Data="Yapay Zeka",Value="Yapay Zeka"},
+                new(){Data="BackEnd",Value="BackEnd"},
+                new(){Data="FrontEnd",Value="FronEnd"},
+                new(){Data="Qality Assurance",Value="Qality Assurance"},
+                new(){Data="Syber Security",Value="Syber Security"} }, "Value", "Data");
+
+            return View();
         }
 
         [HttpPost]
@@ -76,17 +87,18 @@ namespace StudentRegistrationSystem.WebApp.Controllers
         //// İsme göre arama yapacak action methodu
         public IActionResult Search(string? name)
         {
-           if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(name))
             {
-             // İsim belirtilmemişse tüm verileri göster
-               return View(_baseDbContext);
-          }
+                // İsim belirtilmemişse tüm verileri göster
+                return View(_baseDbContext);
+            }
 
             // İsimi içeren kayıtları filtrele
             var searchResponse = _baseDbContext.Students.Where(x => x.Name.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
-                                
-              return View(searchResponse);
-           }
+
+            return View(searchResponse);
+        }
+
 
 
 
@@ -95,5 +107,5 @@ namespace StudentRegistrationSystem.WebApp.Controllers
 
 
 
-    
+        
 
