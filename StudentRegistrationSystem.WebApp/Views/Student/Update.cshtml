@@ -1,4 +1,4 @@
-﻿@model Student
+﻿@model StudentViewModel
 
 <form asp-controller="Student" asp-action="Update" method="post">
     <div class="mb-3">
@@ -31,7 +31,11 @@
         <label asp-for="DateOfRegistration" class="form-label">Date Of Registration : </label>
         <input class="form-control" asp-for="DateOfRegistration">
     </div>
-
+    <div class="mb-3">
+        <label asp-for="Dept" class="form-label">Dept</label>
+        <input asp-for="Dept" type="text" class="form-control">
+        <span class="text-danger" asp-validation-for="Dept">  </span>
+    </div>
 
     <div class="mb-5">
         <span> Education Time </span>
@@ -57,6 +61,7 @@
         <div class="form-floating mb-5">
             <textarea class="form-control" placeholder="Student add description" id="floatingTextarea"></textarea>
             <label asp-for="Description">Student Description</label>
+            <span class="text-danger" asp-validation-for="Description">  </span>
         </div>
 
     </div>

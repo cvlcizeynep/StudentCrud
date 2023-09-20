@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using StudentRegistrationSystem.WebApp.Models;
+using StudentRegistrationSystem.WebApp.Models.StudentViewModel;
 using StudentRegistrationSystem.WebApp.Repository;
 
 namespace StudentRegistrationSystem.WebApp.Controllers
@@ -8,16 +10,19 @@ namespace StudentRegistrationSystem.WebApp.Controllers
     public class StudentController : Controller
     {
         private readonly BaseDbContext _baseDbContext;
+        private readonly IMapper _mapper;
 
-        public StudentController(BaseDbContext baseDbContext)
+        public StudentController(BaseDbContext baseDbContext,IMapper mapper)
         {
-            _baseDbContext = baseDbContext;//dependecy injection            
+            _baseDbContext = baseDbContext;//dependecy injection
+            _mapper = mapper;                               
         }
 
         public IActionResult Index()
         {
             var students = _baseDbContext.Students.ToList();
-            return View(students);
+
+            return View(_mapper.Map<List<StudentViewModel>>(students));
 
         }
         public IActionResult Delete(int id)
@@ -50,12 +55,35 @@ namespace StudentRegistrationSystem.WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Student student)
+        public IActionResult Create(StudentViewModel student)
         {
-            _baseDbContext.Students.Add(student);
-            _baseDbContext.SaveChanges();
-            TempData["status"] = "Add student succesfully";
-            return RedirectToAction("Index", "Student");
+            if (ModelState.IsValid)
+            {
+                _baseDbContext.Students.Add(_mapper.Map<Student>(student));
+                _baseDbContext.SaveChanges();
+                TempData["status"] = "Add student succesfully";
+                return RedirectToAction("Index", "Student");
+            }
+            else
+            {
+                ViewBag.EducationTime = new Dictionary<string, int>() {
+            {"1 Month",1},
+            {"3 Month",3},
+            {"6 Month",6},
+            {"12 Month",12 }
+            };
+
+
+                ViewBag.DepartmentSelect = new SelectList(new List<SelectDepartment>() {
+                new(){ Data="Yapay Zeka",Value="Yapay Zeka"},
+                new(){Data="BackEnd",Value="BackEnd"},
+                new(){Data="FrontEnd",Value="FronEnd"},
+                new(){Data="Qality Assurance",Value="Qality Assurance"},
+                new(){Data="Syber Security",Value="Syber Security"} }, "Value", "Data");
+
+                return View();              
+
+            }
         }
 
         [HttpGet]
@@ -87,9 +115,9 @@ namespace StudentRegistrationSystem.WebApp.Controllers
 
         }
         [HttpPost]
-        public IActionResult Update(Student student)
+        public IActionResult Update(StudentViewModel student)
         {
-            _baseDbContext.Students.Update(student);
+            _baseDbContext.Students.Update(_mapper.Map<Student>(student));
             _baseDbContext.SaveChanges();
             TempData["status"] = "Update student succesfully";
             return RedirectToAction("Index", "Student");

@@ -1,4 +1,4 @@
-﻿@model Student
+﻿@model StudentViewModel
 
 
 
@@ -6,20 +6,24 @@
     <div class="mb-3">
         <label asp-for="Name" class="form-label">Name</label>
         <input asp-for="Name" type="text" class="form-control">
+        <span class="text-danger" asp-validation-for="Name">  </span>
     </div>
 
     <div class="mb-3">
         <label asp-for="Surname" class="form-label">Surname</label>
         <input asp-for="Surname" type="text" class="form-control">
+        <span class="text-danger" asp-validation-for="Surname">  </span>
     </div>
     <div class="mb-3">
         <label asp-for="Class" class="form-label">Class</label>
-        <input asp-for="Class" type="text" class="form-control">
+        <input asp-for="Class" type="number" class="form-control">
+        <span class="text-danger" asp-validation-for="Class">  </span>
     </div>
 
     <div class="mb-3">
         <label asp-for="Email" class="form-label">E-mail</label>
-        <input asp-for="Email" type="email" class="form-control">
+        <input asp-for="Email" type="text" class="form-control">
+        <span class="text-danger" asp-validation-for="Email">  </span>
     </div>
 
     <div class="mb-3">
@@ -28,16 +32,20 @@
         <select class="form-select" asp-for="Department" asp-items="@ViewBag.DepartmentSelect">
             <option value="">Select Department</option>
         </select>
+        <span class="text-danger" asp-validation-for="Department">  </span>
     </div>
     <div class="mb-3">
         <label asp-for="DateOfRegistration" class="form-label">Date Of Registration : </label>
         <input class="form-control" asp-for="DateOfRegistration">
     </div>
+    <div class="mb-3">
+        <label asp-for="Dept" class="form-label">Dept</label>
+        <input asp-for="Dept" type="text" class="form-control">
+        <span class="text-danger" asp-validation-for="Dept">  </span>
+    </div>
 
-
-    <div class="mb-5">
+     <div class="mb-5">
         <span> Education Time </span>
-
         @foreach (var item in ViewBag.EducationTime as Dictionary<string, int>)
         {
             <div class="form-check mb-2">
@@ -47,10 +55,14 @@
                     @item.Key
                 </label>
             </div>
+
+
+
         }
         <div class="form-floating mb-5">
-            <textarea class="form-control" placeholder="Student add description" id="floatingTextarea"></textarea>
+            <textarea asp-for="Description" placeholder="Student add description" class="form-control"></textarea>
             <label asp-for="Description">Student Description</label>
+            <span class="text-danger" asp-validation-for="Description"></span>
         </div>
 
     </div>

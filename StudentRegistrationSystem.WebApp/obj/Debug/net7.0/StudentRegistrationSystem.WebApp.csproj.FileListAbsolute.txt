@@ -73,3 +73,5 @@ C:\Users\cvlci\OneDrive\Masaüstü\C#\StudentRegistrationSystem\StudentRegistrat
 C:\Users\cvlci\OneDrive\Masaüstü\C#\StudentRegistrationSystem\StudentRegistrationSystem.WebApp\obj\Debug\net7.0\StudentRegistrationSystem.WebApp.pdb
 C:\Users\cvlci\OneDrive\Masaüstü\C#\StudentRegistrationSystem\StudentRegistrationSystem.WebApp\obj\Debug\net7.0\StudentRegistrationSystem.WebApp.genruntimeconfig.cache
 C:\Users\cvlci\OneDrive\Masaüstü\C#\StudentRegistrationSystem\StudentRegistrationSystem.WebApp\obj\Debug\net7.0\ref\StudentRegistrationSystem.WebApp.dll
+C:\Users\cvlci\OneDrive\Masaüstü\C#\StudentRegistrationSystem\StudentRegistrationSystem.WebApp\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\cvlci\OneDrive\Masaüstü\C#\StudentRegistrationSystem\StudentRegistrationSystem.WebApp\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

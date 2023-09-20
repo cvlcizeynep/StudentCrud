@@ -1,21 +1,54 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using StudentRegistrationSystem.WebApp.Models;
+using StudentRegistrationSystem.WebApp.Models.AdminViewModel;
+using StudentRegistrationSystem.WebApp.Models.StudentViewModel;
+using StudentRegistrationSystem.WebApp.Repository;
 using System.Diagnostics;
 
 namespace StudentRegistrationSystem.WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        
+        private readonly BaseDbContext _baseDbContext;
+        private readonly IMapper _mapper;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(BaseDbContext baseDbContext, IMapper mapper)
         {
-            _logger = logger;
+            _baseDbContext = baseDbContext;//dependecy injection
+            _mapper = mapper;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult Index(AdminViewModel admin)
+        {
+           
+            if (ModelState.IsValid)
+            {
+                _baseDbContext.Admins.Add(_mapper.Map<Admin>(admin));
+                _baseDbContext.SaveChanges();
+
+                return View();
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(admin.AdminName)&&!admin.AdminName.Contains("admin")){
+
+                    ModelState.AddModelError(String.Empty, "Invalid Admin");
+                }
+                return View();
+            }
+        }
+
+        private IActionResult RedirectAction(string v1, string v2)
+        {
+            throw new NotImplementedException();
         }
 
         public IActionResult Privacy()

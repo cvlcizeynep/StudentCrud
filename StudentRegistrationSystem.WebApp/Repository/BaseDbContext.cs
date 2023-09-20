@@ -18,6 +18,7 @@ namespace StudentRegistrationSystem.WebApp.Repository
 
 
         public DbSet<Student> Students { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
 
 

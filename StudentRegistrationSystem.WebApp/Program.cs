@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using StudentRegistrationSystem.WebApp.Repository;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddDbContext<BaseDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("sqlCon"));
 });
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 

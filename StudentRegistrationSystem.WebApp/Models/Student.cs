@@ -11,5 +11,8 @@
         public string? EducationTime { get; set; }
         public string? Description { get; set; }
         public DateTime? DateOfRegistration { get; set; }
+
+        public Decimal? Dept { get; set; }
+        public Decimal RemainingDept { get; set; }
     }
 }
