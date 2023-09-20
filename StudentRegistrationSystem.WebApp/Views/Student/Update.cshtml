@@ -1,7 +1,6 @@
 ﻿@model Student
 
 <form asp-controller="Student" asp-action="Update" method="post">
-    <input type="hidden" asp-for="Id"/>
     <div class="mb-3">
         <label asp-for="Name" class="form-label">Name</label>
         <input asp-for="Name" type="text" class="form-control">
@@ -19,16 +18,51 @@
     <div class="mb-3">
         <label asp-for="Email" class="form-label">E-mail</label>
         <input asp-for="Email" type="email" class="form-control">
-
-            </div>
+    </div>
 
     <div class="mb-3">
-        <label asp-for="Department" class="form-label">Deparment</label>
-        <input asp-for="Department" type="text" class="form-control">
+        @*  <label asp-for="Department" class="form-label">Deparment</label>
+        <input asp-for="Department" type="text" class="form-control"> *@
+        <select class="form-select" asp-for="Department" asp-items="@ViewBag.DepartmentSelect">
+            <option value="">Select Department</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DateOfRegistration" class="form-label">Date Of Registration : </label>
+        <input class="form-control" asp-for="DateOfRegistration">
     </div>
 
 
-    <button type="submit" class="btn btn-primary">Student Update</button>
+    <div class="mb-5">
+        <span> Education Time </span>
+
+        @foreach (var item in ViewBag.EducationTime as Dictionary<string, int>)
+        {
+            <div class="form-check mb-2">
+            @if(item.Key == ViewBag.radioEducationTime){
+                <input checked="checked" class="form-check-input" type="radio" id="@(item.Value)EducationTime"
+                       asp-for="EducationTime" value="@item.Value">
+            } else  
+            {
+
+                <input  class="form-check-input" type="radio" id="@(item.Value)EducationTime"
+                asp-for="EducationTime" value="@item.Value">
+                       }         
+                
+                <label class="form-check-label" asp-for="EducationTime" for="@(item.Value)EducationTime">
+                    @item.Key
+                </label>
+            </div>
+        }
+        <div class="form-floating mb-5">
+            <textarea class="form-control" placeholder="Student add description" id="floatingTextarea"></textarea>
+            <label asp-for="Description">Student Description</label>
+        </div>
+
+    </div>
+
+
+    <button type="submit" class="btn btn-dark">Student Update</button>
 
 
 </form>

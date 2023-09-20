@@ -62,8 +62,28 @@ namespace StudentRegistrationSystem.WebApp.Controllers
         public IActionResult Update(int id)
         {
             var student = _baseDbContext.Students.Find(id);
+            
+            ViewBag.EducationTime = new Dictionary<string, int>() {
+            {"1 Month",1},
+            {"3 Month",3},
+            {"6 Month",6},
+            {"12 Month",12 }
+            };
+            ViewBag.radioEducationTime = student.EducationTime;
+
+            ViewBag.DepartmentSelect = new SelectList(new List<SelectDepartment>() {
+                new(){ Data="Yapay Zeka",Value="Yapay Zeka"},
+                new(){Data="BackEnd",Value="BackEnd"},
+                new(){Data="FrontEnd",Value="FronEnd"},
+                new(){Data="Qality Assurance",Value="Qality Assurance"},
+                new(){Data="Syber Security",Value="Syber Security"} }, "Value", "Data",student.Department);
 
             return View(student);
+
+
+
+
+            
 
         }
         [HttpPost]
