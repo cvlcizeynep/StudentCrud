@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/StudentRegistrationSystem.WebApp.styles.css" asp-append-version="true" />
+    <link href="~ /StudentRegistrationSystem.WebApp.styles.css"
 </head>
 <body>
     <header>
@@ -20,14 +21,25 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><b>Admin Login</b></a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-user-plus"></i><b>Admin Login</b></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Index"><b>Students</b></a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Index"><i class="fa-solid fa-house"></i><b>Students</b></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Create"><b>Add Student</b></a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Create"><i class="fa-solid fa-house"></i><b>Add Student</b></a>
                         </li>
+                        <form class="d-flex" role="search" style=" float: left; margin-left: 465px;">
+
+                            @using (Html.BeginForm())
+                            {
+                                @*  <div style=" float: left; margin-left: 465px;"> *@
+                                @Html.TextBox("Search", null, new {@class="form-control me-1", @placeholder="Search"})
+                                ;
+
+                                <button class="btn btn-dark" type="submit">Search</button>
+                            }
+                        </form>
                        
                     </ul>
                 </div>

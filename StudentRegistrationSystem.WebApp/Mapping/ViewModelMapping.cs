@@ -11,6 +11,7 @@ namespace StudentRegistrationSystem.WebApp.Mapping
         public ViewModelMapping() {
             CreateMap<Student, StudentViewModel>().ReverseMap();
             CreateMap<Admin, AdminViewModel>().ReverseMap();
+            CreateMap<Student,StudentUpdateViewModel>().ReverseMap();
 
 
 

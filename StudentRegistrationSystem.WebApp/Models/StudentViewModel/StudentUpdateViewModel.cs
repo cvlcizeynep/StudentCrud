@@ -2,7 +2,7 @@
 
 namespace StudentRegistrationSystem.WebApp.Models.StudentViewModel
 {
-    public class StudentViewModel
+    public class StudentUpdateViewModel
     {
         public int Id { get; set; }
         [Required]
@@ -30,9 +30,7 @@ namespace StudentRegistrationSystem.WebApp.Models.StudentViewModel
         public Decimal? Dept { get; set; }
         public Decimal RemainingDept { get; set; }
     }
+
+
 }
-
-
-
-
 

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using StudentRegistrationSystem.WebApp.Models;
 using StudentRegistrationSystem.WebApp.Models.StudentViewModel;
 using StudentRegistrationSystem.WebApp.Repository;
@@ -11,6 +12,7 @@ namespace StudentRegistrationSystem.WebApp.Controllers
     {
         private readonly BaseDbContext _baseDbContext;
         private readonly IMapper _mapper;
+        private object _baseDbcontext;
 
         public StudentController(BaseDbContext baseDbContext,IMapper mapper)
         {
@@ -91,13 +93,15 @@ namespace StudentRegistrationSystem.WebApp.Controllers
         {
             var student = _baseDbContext.Students.Find(id);
             
+          
+            ViewBag.radioEducationTime = student.EducationTime;
+
             ViewBag.EducationTime = new Dictionary<string, int>() {
             {"1 Month",1},
             {"3 Month",3},
             {"6 Month",6},
             {"12 Month",12 }
             };
-            ViewBag.radioEducationTime = student.EducationTime;
 
             ViewBag.DepartmentSelect = new SelectList(new List<SelectDepartment>() {
                 new(){ Data="Yapay Zeka",Value="Yapay Zeka"},
@@ -106,25 +110,43 @@ namespace StudentRegistrationSystem.WebApp.Controllers
                 new(){Data="Qality Assurance",Value="Qality Assurance"},
                 new(){Data="Syber Security",Value="Syber Security"} }, "Value", "Data",student.Department);
 
-            return View(student);
-
-
-
-
-            
+            return View(_mapper.Map<StudentUpdateViewModel>(student));                     
 
         }
         [HttpPost]
-        public IActionResult Update(StudentViewModel student)
+        public IActionResult Update(StudentUpdateViewModel updateStudent)
         {
-            _baseDbContext.Students.Update(_mapper.Map<Student>(student));
-            _baseDbContext.SaveChanges();
-            TempData["status"] = "Update student succesfully";
-            return RedirectToAction("Index", "Student");
+            if (ModelState.IsValid)
+            {
+                ViewBag.radioEducationTime = updateStudent.EducationTime;
 
+                ViewBag.EducationTime = new Dictionary<string, int>() {
+            {"1 Month",1},
+            {"3 Month",3},
+            {"6 Month",6},
+            {"12 Month",12 }
+            };
+
+                ViewBag.DepartmentSelect = new SelectList(new List<SelectDepartment>() {
+                new(){ Data="Yapay Zeka",Value="Yapay Zeka"},
+                new(){Data="BackEnd",Value="BackEnd"},
+                new(){Data="FrontEnd",Value="FronEnd"},
+                new(){Data="Qality Assurance",Value="Qality Assurance"},
+                new(){Data="Syber Security",Value="Syber Security"} }, "Value", "Data", updateStudent.Department);
+
+                return View();
+
+
+
+            }
+
+                return View();
         }
 
-        public IActionResult Details(int id)
+        
+        
+
+            public IActionResult Details(int id)
         {
             Student? student = _baseDbContext.Students.SingleOrDefault(x => x.Id == id);
             return View(student);

@@ -1,14 +1,14 @@
 ﻿@model List<StudentViewModel>
 @if (TempData != null)
 {
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-light" role="alert">
         @TempData["status"]
     </div>
 }
 
 
 
-<table class="table table-success table-hover">
+<table  border="1" class="table table-light ">
     <thead>
         <tr>
             <th scope="col">Id</th>
@@ -17,7 +17,12 @@
             <th scope="col">Class</th>
             <th scope="col">Department</th>
             <th scope="col">Mail</th>
-            <th scope="col">Education<br/>Time</th>
+            <th scope="col">Education
+            <br />Time</th>
+            <th scope="col">Update</th>
+            <th scope="col">Details</th>
+            <th scope="col">Delete</th>
+            <
         </tr>
     </thead>
     <tbody>
@@ -30,16 +35,16 @@
                 <td>@item.Class</td>
                 <td>@item.Department</td>
                 <td>@item.Email</td>   
-                <td>@item.EducationTime</td>   
-                
-                <td><a asp-action="Update" asp-controller="Student" asp-route-id="@item.Id">Update</a></td>
-                <td><a asp-action="Details" asp-controller="Student" asp-route-id="@item.Id">Details</a></td>
-                <td><a asp-action="Delete" asp-controller="Student" asp-route-id="@item.Id">Delete</a></td>
+                <td>@item.EducationTime</td>
+
+                <td><a class="btn btn-outline-primary" asp-action="Update" asp-controller="Student" asp-route-id="@item.Id">Update </a></td>
+                <td><a class="btn btn-outline-success" asp-action="Details" asp-controller="Student" asp-route-id="@item.Id">Details</a></td>
+                <td><a class="btn btn-outline-dark" asp-action="Delete" asp-controller="Student" asp-route-id="@item.Id">Delete</a></td>
             </tr>
         }
 
     </tbody>
 </table>
-<a asp-controller="Student" asp-action="Create" type="button" class="btn btn-primary">Add Student</a>
+<a asp-controller="Student" asp-action="Create" type="button" class="btn btn-dark">Add Student</a>
 
 

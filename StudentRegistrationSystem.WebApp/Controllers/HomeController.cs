@@ -30,11 +30,9 @@ namespace StudentRegistrationSystem.WebApp.Controllers
         {
            
             if (ModelState.IsValid)
-            {
-                _baseDbContext.Admins.Add(_mapper.Map<Admin>(admin));
-                _baseDbContext.SaveChanges();
+            {           
 
-                return View();
+                return RedirectAction("Index", "Student");
             }
             else
             {

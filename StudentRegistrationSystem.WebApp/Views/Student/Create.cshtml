@@ -1,5 +1,10 @@
 ﻿@model StudentViewModel
-
+<style>
+    button:hover {
+        background-color: burlywood;
+        color: brown;
+    }
+</style>
 
 
 <form asp-controller="Student" asp-action="Create" method="post">
@@ -69,6 +74,12 @@
 
 
     <button type="submit" class="btn btn-dark">Student Save</button>
-
-
 </form>
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+}
+                    
