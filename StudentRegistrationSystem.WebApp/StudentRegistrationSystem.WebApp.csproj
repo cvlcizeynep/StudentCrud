@@ -20,4 +20,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\AdminViewModel\" />
+    <Folder Include="Models\StudentViewModel\" />
+  </ItemGroup>
+
 </Project>

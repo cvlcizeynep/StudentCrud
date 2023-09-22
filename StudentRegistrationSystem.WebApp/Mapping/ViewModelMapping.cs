@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using StudentRegistrationSystem.WebApp.Models;
-using StudentRegistrationSystem.WebApp.Models.AdminViewModel;
-using StudentRegistrationSystem.WebApp.Models.StudentViewModel;
+using StudentRegistrationSystem.WebApp.ViewModels;
 using System.Net.Http.Headers;
 
 namespace StudentRegistrationSystem.WebApp.Mapping

@@ -16,8 +16,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\cvlci\OneDrive\Masaüstü\C#\StudentRegistrationSystem\StudentRegistrationSystem.WebApp
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/cvlci/OneDrive/Masaüstü/C\#/StudentRegistrationSystem/StudentRegistrationSystem.WebApp/PartialViews/_StudentListPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFydGlhbFZpZXdzXF9TdHVkZW50TGlzdFBhcnRpYWxWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/cvlci/OneDrive/Masaüstü/C\#/StudentRegistrationSystem/StudentRegistrationSystem.WebApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cvlci/OneDrive/Masaüstü/C\#/StudentRegistrationSystem/StudentRegistrationSystem.WebApp/Views/Home/Lotus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb3R1cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/cvlci/OneDrive/Masaüstü/C\#/StudentRegistrationSystem/StudentRegistrationSystem.WebApp/Views/Home/Privacy.cshtml]

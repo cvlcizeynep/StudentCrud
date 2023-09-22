@@ -1,0 +1,24 @@
+﻿@using StudentRegistrationSystem.WebApp.ViewModels
+@model StudentListPartialViewModel
+<table class="table table-success  table striped ">
+    <thead>
+<tr>
+    <th>Id</th>
+    <th>Name </th>
+    <th>Surname</th>
+    <th>Department</th>
+    
+</tr>
+
+
+    </thead>
+    <tbody>
+@foreach(var item in Model.Students){
+       <tr>
+           <td>@item.Id </td>
+           <td>@item.Name </td>
+           <td>@item.Surname </td>
+           <td> @item.Department</td>
+       </tr> }
+    </tbody>
+</table>

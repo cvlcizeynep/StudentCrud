@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StudentRegistrationSystem.WebApp.Models.AdminViewModel
+namespace StudentRegistrationSystem.WebApp.ViewModels
 {
     public class AdminViewModel
     {
@@ -15,5 +15,5 @@ namespace StudentRegistrationSystem.WebApp.Models.AdminViewModel
 
     }
 
-    
+
 }

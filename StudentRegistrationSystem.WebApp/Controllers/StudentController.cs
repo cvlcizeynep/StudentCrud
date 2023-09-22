@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StudentRegistrationSystem.WebApp.Models;
-using StudentRegistrationSystem.WebApp.Models.StudentViewModel;
 using StudentRegistrationSystem.WebApp.Repository;
+using StudentRegistrationSystem.WebApp.ViewModels;
 
 namespace StudentRegistrationSystem.WebApp.Controllers
 {

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StudentRegistrationSystem.WebApp.Models.StudentViewModel
+namespace StudentRegistrationSystem.WebApp.ViewModels
 {
-    public class StudentViewModel
+    public class StudentUpdateViewModel
     {
         public int Id { get; set; }
         [Required]
@@ -27,12 +27,10 @@ namespace StudentRegistrationSystem.WebApp.Models.StudentViewModel
         public DateTime? DateOfRegistration { get; set; }
         [Required]
         [RegularExpression(@"\d+(\.\d\d)?", ErrorMessage = "Enter at least two characters after the dot in price field")]
-        public Decimal? Dept { get; set; }
-        public Decimal RemainingDept { get; set; }
+        public decimal? Dept { get; set; }
+        public decimal RemainingDept { get; set; }
     }
+
+
 }
-
-
-
-
 

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using StudentRegistrationSystem.WebApp.Models;
-using StudentRegistrationSystem.WebApp.Models.AdminViewModel;
-using StudentRegistrationSystem.WebApp.Models.StudentViewModel;
+
 using StudentRegistrationSystem.WebApp.Repository;
+using StudentRegistrationSystem.WebApp.ViewModels;
 using System.Diagnostics;
 
 namespace StudentRegistrationSystem.WebApp.Controllers
@@ -22,7 +22,8 @@ namespace StudentRegistrationSystem.WebApp.Controllers
 
         [HttpGet]
         public IActionResult Index()
-        {
+         {
+           
             return View();
         }
         [HttpPost]
@@ -43,6 +44,27 @@ namespace StudentRegistrationSystem.WebApp.Controllers
                 return View();
             }
         }
+
+        public IActionResult Lotus()
+        {
+            var students = _baseDbContext.Students.OrderByDescending(x => x.Id).Select(x => new StudentPartialViewModel()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Surname = x.Surname,
+                Department = x.Department
+            }
+
+            ).ToList();
+            ViewBag.studentListPartialViewModel = new StudentListPartialViewModel()
+            {
+                Students=students
+
+            };
+            return View();
+        }
+
+
 
         private IActionResult RedirectAction(string v1, string v2)
         {
